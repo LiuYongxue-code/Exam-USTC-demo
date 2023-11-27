@@ -1,0 +1,209 @@
+\documentclass[space]{ctexart} 
+\usepackage{geometry,calc}
+\geometry{a3paper,twocolumn,landscape,hmargin={1.5cm,2cm},vmargin={2cm,2cm},footskip=0.3cm,headsep=1cm}
+
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb}%
+\def\dif{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator{\rank}{rank}
+\usepackage{bm}
+\usepackage{pifont}
+\usepackage{extarrows}
+\usepackage{scalerel}
+
+\usepackage{fancybox}
+\fancypage{
+\setlength{\fboxsep}{8pt}%
+\setlength{\fboxrule}{1.5pt}%
+\setlength{\shadowsize}{0pt}%
+\shadowbox}{}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\columnseprule}{0.4pt}
+\setlength{\columnsep}{1.8cm}
+
+\topskip=1.5cm
+
+\usepackage{tikz}
+\def\univ#1{\begin{center}{\zihao{-1}\CJKfontspec{华文中宋粗} #1}\end{center}}
+\def\biaoti#1{\begin{center}{
+    \begin{tikzpicture}[overlay]
+    \node at (4.75,1.7){\zihao{1}\CJKfontspec{华文中宋粗} 中~ 国~ 科~ 学~ 技~ 术~ 大~ 学};
+    \end{tikzpicture}
+    \zihao{2}\CJKfontspec{华文中宋粗} #1}\end{center}}
+\def\DMKM{
+\begin{center}
+{\zihao{-4}\heiti
+姓名: \underline{\hspace{4cm}}\hspace{2cm}学号: \underline{\hspace{4cm}}
+}
+\end{center}}
+\newcommand\DT[2]
+{
+\begin{center}
+    {
+        \hspace{2cm}
+    {\zihao{-4}\heiti 考试时间:} {\zihao{-4} #1} \hfill {\zihao{-4}\heiti 主讲教师:} {\zihao{-4} #2}
+        \hspace{2cm}
+    }
+\end{center}
+}
+\def\tishi#1{\begin{center}{\zihao{-4}\heiti #1}\end{center}}
+
+\usepackage{lastpage}
+\newcommand{\lastpageref}{\pageref{LastPage}}
+\usepackage{hyperref}
+\newcounter{foo}
+\newcounter{fox}
+\addtocounter{foo}{1}
+\fancyfoot[CE,CO]{\hspace*{17.75cm}第\refstepcounter{fox}\thefoo\refstepcounter{foo}页 \quad 共~\lastpageref~页\hspace*{9cm}
+\textsl{考试结束后请将本试题与答题纸（卡）一并交回}}
+\renewcommand{\headrulewidth}{0pt}
+
+\ctexset{section = {name = {,、\hspace*{-5mm}},number = \chinese{section},format = {\vspace{4mm}\zihao{4}\heiti\raggedright}}}
+\ctexset{subsection = {name = {\hspace{5mm},\hspace*{-1mm}},number = (\chinese{subsection}),format = {\zihao{4}\heiti\raggedright}}}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+
+%%--------------------------设置数学字体为新罗马字体-------------------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathptmx}
+\newfontfamily\TNRBI{Times New Roman Bold Italic} %新罗马字体英文的粗斜体
+\newcommand{\bfit}[1]{\text{\TNRBI #1}} %amsmath 
+%%-------------------------------------------------------------------------
+
+%选择题
+\newcommand{\fourch}[4]{\\\begin{tabular}{*{4}{@{}p{3.5cm}}}(A)~#1 & (B)~#2 & (C)~#3 & (D)~#4\end{tabular}} % 四行
+\newcommand{\twoch}[4]{\\\begin{tabular}{*{2}{@{}p{7cm}}}(A)~#1 & (B)~#2\end{tabular}\\\begin{tabular}{*{2}{@{}p{7cm}}}(C)~#3 &
+		(D)~#4\end{tabular}}  %两行
+\newcommand{\onech}[4]{\\(A)~#1 \\ (B)~#2 \\ (C)~#3 \\ (D)~#4}  % 一行
+
+\usepackage{makecell}
+\usepackage{setspace} 
+
+
+\def\tiankongdaan#1{\makebox[3em][c]{#1}}
+\newcommand{\blank}[1]{\underline{\tiankongdaan{\hspace{4cm}}}}
+\DeclareOption{ans}{\renewcommand{\blank}[1]{\,\underline{#1}\,
+}}
+\ProcessOptions
+
+
+\begin{document}
+
+\setcounter{page}{9} %这里设置从第九页开始计数
+% ***************************************
+\univ{~}
+\biaoti{2023--2024 秋季实分析试卷}
+\DT{\today 8:30--10:30}{赵老师、郭老师}
+\DMKM
+\tishi{注意: 所有题目的解答要有详细过程, 其中使用的定理或命题需要注明.}
+
+\begin{center}
+\begin{tabular}{|m{0.03\textwidth}|*{8}{m{0.035\textwidth}|}p{0.04\textwidth}|}
+	\hline
+\centering  题~号 & \centering 一 & \centering 二 & \centering 三 & \centering 四& \centering 五 & \centering 六 & \centering 七 % & \centering 八 & \centering 九 & \centering 十
+& \centering 总~分 & \makecell{阅卷\\教师} \rule{0pt}{3mm} \\
+	\hline
+	\centering 分~数 &  &  &  &  &  &  &  &  &  %&  &
+	\rule{0pt}{8mm} \\\hline
+				% \centering 计 &  &  &  &  &  &  &  &  &  &  & \\
+				% \centering 分 &  &  &  &  &  &  &  &  &  &  & \\
+				% \centering 人 &  &  &  &  &  &  &  &  &  &  & \\  \hline
+\end{tabular}
+\end{center}
+\setlength{\parskip}{1.5ex} % 大标题与小标体之间固定间距
+\section*{\hspace{5cm} 一、选择题~(每题~10 分，共~10 分)}
+\vspace{-1.3cm} \hspace{0.1cm} 
+		\begin{tabular}{|p{0.05\textwidth}|p{0.05\textwidth}|}
+			\hline
+			% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+			\centering 阅卷人& \\
+			\hline
+			\centering 得~~分 &  \\
+			\hline
+		\end{tabular}
+
+
+
+\setcounter{enumii}{0}
+\begin{enumerate}[itemsep=1.2em,topsep=0pt,left=2em] % itemsep 参数是两个 item 内容之间的间距
+\item 设有平面区域~$D=\{(x,y)\mid -a\leqslant x\leqslant a, x\leqslant y\leqslant a\}$ , ~$D_1=\{(x,y)\mid 0\leqslant x\leqslant a, x\leqslant y\leqslant a\}$ , 则~$\displaystyle{\iint\limits_{D}(xy+\cos x\sin y)\dif x\dif y}=$ ~(~~~~~~)
+ \twoch{~$0$.}{~$4\displaystyle{\iint\limits_{D_1}(xy+\cos x\sin y)\dif x\dif y}$.}{~$2\displaystyle{\iint\limits_{D_1}xy\dif x\dif y}$.}{~$2\displaystyle{\iint\limits_{D_1}\cos x\sin y\dif x\dif y}$.}
+
+%\end{enumerate}
+
+
+\section*{\hspace{4cm} 二、填空题~(每题~10 分，共~20 分)}
+\vspace{-1.3cm} \hspace{-1cm} 
+		\begin{tabular}{|p{0.05\textwidth}|p{0.05\textwidth}|}
+			\hline
+			% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+			\centering 阅卷人& \\
+			\hline
+			\centering 得~~分 &  \\
+			\hline
+		\end{tabular}
+
+
+%\begin{enumerate}[itemsep=1.2em,topsep=0pt,left=2em]
+%\setcounter{enumii}{1}
+
+  \item 设~$z = u^2\ln v$ , 而~$u= \dfrac{x}{y}, v = x-y$ , 则~$\dfrac{\partial z}{\partial x}= $~\blank{~~$\dfrac{2x}{y^2}\ln(x-y)+\dfrac{x^2}{y^2(x-y)}$~~}.
+  
+  \item 把二次积分~$\displaystyle{\int_0^1 \dif x \int_0^{\sqrt{1-x^2}} f(x,y) \dif y}$ 化为极坐标形式的二次积分为\blank{~~~$\displaystyle{\int_0^{\pi/2} \dif \theta \int_0^1 f(\rho \cos\theta, \rho\sin\theta)\rho \dif \rho}$~~~~}.
+
+\section*{\hspace{4cm} 三、解答题~(每题~30 分，共~120 分)}
+\vspace{-1.3cm} \hspace{-1cm} 
+		\begin{tabular}{|p{0.05\textwidth}|p{0.05\textwidth}|}
+			\hline
+			% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+			\centering 阅卷人& \\
+			\hline
+			\centering 得~~分 &  \\
+			\hline
+		\end{tabular}
+  
+\item (30 分) 设$f$是$\mathbb{R}^\mathrm{d}$上不恒为零的可积函数, 证明存在常数$c>0$使得对于所有的$|x|\geq 1$,
+\begin{align*}
+f^*\geq \dfrac{c}{|x|^{\rm d}}
+\end{align*}
+其中
+\begin{align*}
+f*(x)=\sup\limits_{x\in B}\dfrac{1}{m(B)}\int_{B}|f(x)|\dif y,~x\in \mathbb{R}^\mathrm{d}.
+\end{align*}
+
+
+\item (30分) 设 $ f_{n} $ 是区间$[0,1] $ 上的一列可测函数, 满足
+\begin{align*}
+\lim_{n \to \infty} f_{n}(x)=0, ~\text{a.e.}~ x \in [0,1]
+\end{align*}
+且
+\begin{align*}
+\sup\limits_{n}\left\|f_{n}\right\|_{L^{2}([0,1 \mid)} \leq 1
+\end{align*}
+证明:
+\begin{align*}
+\lim\limits_{n \to \infty}\left\|f_{n}\right\|_{L^{1}([0,1])}=0.
+\end{align*}
+
+\item (30分) 令$ m $ 表示 $ \mathbb{R}$ 上的Lebesgue测度,  $A \subset \mathbb{R} $ 是Lebesgue 可测集. 假设对于所有的实数  $a<b$,
+    \begin{align*}
+    m(A \cap[a, b])<\dfrac{b-a}{2}
+    \end{align*}
+    证明: $ m(A)=0 $.
+
+\item (30分) 若 $ f $ 在$\mathbb{R}$上绝对连续, 且 $ f \in L^{1}(\mathbb{R}) $.  如果
+\begin{align*}
+\lim\limits_{t \to  0} \int_{\mathbb{R}}\left|\frac{f(x+t)-f(x)}{t}\right| \dif x=0
+\end{align*}
+证明: $ f \equiv 0 $.
+
+\end{enumerate}
+
+\clearpage	
+
+\end{document}
+
